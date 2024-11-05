@@ -1,0 +1,2 @@
+requests~=2.27
+mozilla-django-oidc==4.0.1

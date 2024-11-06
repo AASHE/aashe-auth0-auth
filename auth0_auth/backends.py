@@ -14,7 +14,7 @@ def provider_logout(request):
     return build_url_with_query_strings(settings.AUTH0_LOGOUT_ENDPOINT, params)
 
 
-class CustomOIDCAuthenticationBackend(OIDCAuthenticationBackend):
+class Auth0Backend(OIDCAuthenticationBackend):
     def verify_claims(self, claims) -> bool:
         groups = self._retrieve_groups_from_claims(claims)
         return OIDCToDjangoGroupsMapping.has_any_valid_group(groups)

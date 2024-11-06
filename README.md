@@ -48,7 +48,7 @@ LOGIN_REDIRECT_URL = f"{BASE_URL}/django-admin/"
 LOGOUT_REDIRECT_URL = f"{BASE_URL}/django-admin/logout/"
 OIDC_OP_JWKS_ENDPOINT = f"https://{AUTH0_DOMAIN}/.well-known/jwks.json"
 OIDC_RP_SIGN_ALGO = "RS256"
-OIDC_OP_LOGOUT_URL_METHOD = "aashe_accounts.support.oidc_helpers.provider_logout"
+OIDC_OP_LOGOUT_URL_METHOD = "auth0_auth.backends.provider_logout"
 # So we can configure it dynamically
 try:
     document = requests.get(f"https://{AUTH0_DOMAIN}/.well-known/openid-configuration").json()

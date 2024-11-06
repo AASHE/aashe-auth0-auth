@@ -25,7 +25,7 @@ Edit your urls.py to include:
 
 ```
 urlpatterns = [
-    url(r'^auth0/', include('auth0_auth.urls')),
+    path(r'^auth0/', include('auth0_auth.urls')),
     ...
 ]
 ```

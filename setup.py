@@ -21,7 +21,7 @@ def get_readme():
 
 setup(
     name = 'aashe-auth0-auth',
-    version = __import__('auth0_auth').get_version().replace(' ', '-'),
+    version = '0.0.1',
     url = 'https://github.com/aashe/aashe-auth0-auth',
     author = 'Dzemsad Dugalic',
     author_email = 'dzemsad.dugalic.fe@gmail.com',

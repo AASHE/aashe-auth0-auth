@@ -3,7 +3,7 @@ from django.db.models import QuerySet
 from mozilla_django_oidc.auth import OIDCAuthenticationBackend
 
 from django.conf import settings
-from http_utils import build_url_with_query_strings
+from .http_utils import build_url_with_query_strings
 
 
 def provider_logout(request):

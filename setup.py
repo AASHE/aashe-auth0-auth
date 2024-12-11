@@ -20,7 +20,7 @@ def get_readme():
     return ''
 
 setup(
-    name = 'aashe-auth0-auth',
+    name = 'auth0-auth',
     version = '0.0.1',
     url = 'https://github.com/aashe/aashe-auth0-auth',
     author = 'Dzemsad Dugalic',

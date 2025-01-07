@@ -78,3 +78,10 @@ class Auth0APIClient:
         response = requests.patch(self.auth0_base_url + f"organizations/{organization_id}", json={"metadata": metadata}, headers=self.headers) 
 
         return response
+
+
+    def add_user_to_organization(self, user_id, organization_id):
+
+        response = requests.post(self.auth0_base_url + f"organizations/{organization_id}/members", json={"members": [user_id,]}, headers=self.headers) 
+
+        return response

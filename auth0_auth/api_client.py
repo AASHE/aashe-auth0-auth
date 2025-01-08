@@ -79,6 +79,11 @@ class Auth0APIClient:
 
         return response
 
+    def get_user_organizations(self, user_id):
+
+        response = requests.get(self.auth0_base_url + f"users/{user_id}/organizations", headers=self.headers)
+
+        return response
 
     def add_user_to_organization(self, user_id, organization_id):
 

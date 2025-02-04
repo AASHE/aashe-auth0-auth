@@ -90,3 +90,15 @@ class Auth0APIClient:
         response = requests.post(self.auth0_base_url + f"organizations/{organization_id}/members", json={"members": [user_id,]}, headers=self.headers) 
 
         return response
+
+    def get_active_users_count(self):
+
+        response = requests.get(self.auth0_base_url + f"stats/active-users", headers=self.headers)
+
+        return response
+
+    def get_daily_stats(self):
+
+        response = requests.get(self.auth0_base_url + f"stats/daily", headers=self.headers)
+
+        return response

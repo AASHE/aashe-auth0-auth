@@ -8,7 +8,7 @@ class AASHEAccountsAPIClient:
 
         self.headers = { 
             "Content-Type": "application/json", 
-            "Authorization": f"Bearer {self.aashe_accounts_api_key}" 
+            "Authorization": f"Bearer {self.accounts_api_key}" 
         }
 
     def get_user_profile(self, username):

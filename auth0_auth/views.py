@@ -1,3 +1,4 @@
+from django.contrib import auth
 from mozilla_django_oidc.views import OIDCAuthenticationCallbackView
 from auth0_auth.api_client import AASHEAccountsAPIClient
 

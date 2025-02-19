@@ -1,6 +1,22 @@
 import requests, json, time
 from django.conf import settings
 
+class AASHEAccountsAPIClient:
+    def __init__(self, accounts_base_url=None, accounts_api_key=None):
+        self.accounts_base_url = accounts_base_url or settings.ACCOUNTS_BASE_URL
+        self.accounts_api_key = accounts_api_key or settings.ACCOUNTS_API_KEY
+
+        self.headers = { 
+            "Content-Type": "application/json", 
+            "Authorization": f"Bearer {self.aashe_accounts_api_key}" 
+        }
+
+    def get_user_profile(self, username):
+
+        response = requests.post(self.accounts_base_url + f"/user_profile?username={username}", headers=self.headers)
+
+        return response
+
 class Auth0APIClient:
     def __init__(self, auth0_domain=None, auth0_client_id=None, auth0_client_secret=None):
         self.auth0_domain = auth0_domain or settings.AUTH0_DOMAIN

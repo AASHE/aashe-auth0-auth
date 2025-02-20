@@ -13,7 +13,7 @@ class AASHEAccountsAPIClient:
 
     def get_user_profile(self, username):
 
-        response = requests.post(self.accounts_base_url + f"/user_profile?username={username}", headers=self.headers)
+        response = requests.get(self.accounts_base_url + f"/user_profile?username={username}", headers=self.headers)
 
         return response
 

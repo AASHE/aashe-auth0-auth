@@ -22,7 +22,9 @@ class GetUserProfileCallbackView(OIDCAuthenticationCallbackView):
                 self.request.session["user_profile"] = resp.json()
                 auth.login(self.request, self.user)
             else:
-                print(resp)
+                print("Error retrieving accounts data...")
+                print(resp.content)
+                return HttpResponseRedirect(self.failure_url)
 
         # Figure out when this id_token will expire. This is ignored unless you're
         # using the SessionRefresh middleware.

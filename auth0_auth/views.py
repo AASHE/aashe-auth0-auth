@@ -29,6 +29,6 @@ class GetUserProfileCallbackView(OIDCAuthenticationCallbackView):
         # get user profile and access data and store it in the session
         accounts_client = AASHEAccountsAPIClient()
         resp = accounts_client.get_user_profile(self.user.username)
-        self.request.session["user_profile"] = resp
+        self.request.session["user_profile"] = resp.json()
 
         return HttpResponseRedirect(self.success_url)

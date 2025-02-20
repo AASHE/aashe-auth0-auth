@@ -6,6 +6,8 @@ class AASHEAccountsAPIClient:
         self.accounts_base_url = accounts_base_url or settings.ACCOUNTS_BASE_URL
         self.accounts_api_key = accounts_api_key or settings.ACCOUNTS_API_KEY
 
+        self.accounts_base_url = self.accounts_base_url + "/api/v1/"
+
         self.headers = { 
             "Content-Type": "application/json", 
             "Authorization": f"Bearer {self.accounts_api_key}" 
@@ -13,7 +15,7 @@ class AASHEAccountsAPIClient:
 
     def get_user_profile(self, username):
 
-        response = requests.get(self.accounts_base_url + f"/user_profile?username={username}", headers=self.headers)
+        response = requests.get(self.accounts_base_url + f"user_profile?username={username}", headers=self.headers)
 
         return response
 

@@ -15,7 +15,14 @@ class GetUserProfileCallbackView(OIDCAuthenticationCallbackView):
             or not request_user.is_authenticated
             or request_user != self.user
         ):
-            auth.login(self.request, self.user)
+            # get user profile and access data and store it in the session
+            accounts_client = AASHEAccountsAPIClient()
+            resp = accounts_client.get_user_profile(self.user.username)
+            if resp.status_code == 200:
+                self.request.session["user_profile"] = resp.json()
+                auth.login(self.request, self.user)
+            else:
+                print(resp)
 
         # Figure out when this id_token will expire. This is ignored unless you're
         # using the SessionRefresh middleware.
@@ -25,10 +32,5 @@ class GetUserProfileCallbackView(OIDCAuthenticationCallbackView):
         self.request.session["oidc_id_token_expiration"] = (
             time.time() + expiration_interval
         )
-
-        # get user profile and access data and store it in the session
-        accounts_client = AASHEAccountsAPIClient()
-        resp = accounts_client.get_user_profile(self.user.username)
-        self.request.session["user_profile"] = resp.json()
 
         return HttpResponseRedirect(self.success_url)

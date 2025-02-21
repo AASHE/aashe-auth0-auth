@@ -32,7 +32,6 @@ class Auth0Backend(OIDCAuthenticationBackend):
             email=email,
             first_name=given_name,
             last_name=family_name,
-            is_staff=True,
         )
         # Relationships
         self._fill_user_with_groups(created_user, claims)
@@ -67,6 +66,9 @@ class Auth0Backend(OIDCAuthenticationBackend):
         groups = cls._retrieve_groups_from_claims(claims)
         django_groups = OIDCToDjangoGroupsMapping.retrieve_django_groups(groups)
         user.groups.set(django_groups)
+
+        if "AASHE_ACCOUNT_STAFF" in groups:
+            user.is_staff = True
 
 
 class OIDCToDjangoGroupsMapping:

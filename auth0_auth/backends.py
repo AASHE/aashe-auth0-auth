@@ -99,3 +99,7 @@ class OIDCToDjangoGroupsMapping:
                 django_groups.append(django_group)
 
         return django_groups
+
+    @classmethod
+    def get_all_django_groups(cls):
+        return [django_group for oidc_group, django_group in cls.oidc_groups_with_django_groups]

@@ -2,7 +2,7 @@ from ninja import NinjaAPI
 from django.core.management import call_command
 
 
-api = NinjaAPI()
+api = NinjaAPI(urls_namespace="auth0_auth-api")
 
 @api.get("/init-groups")
 def add(request):

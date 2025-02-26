@@ -4,11 +4,11 @@ from django.core.management import call_command
 
 api = NinjaAPI(urls_namespace="auth0_auth-api")
 
-@api.get("/init-groups")
-def add(request):
+@api.post("/init-groups")
+def init_groups(request):
     
     try:
-        call_command('my_command', 'foo', bar='baz')
+        call_command('init_groups')
     except Exception as e:
         return {
             "result": str(e)

@@ -69,6 +69,7 @@ class Auth0Backend(OIDCAuthenticationBackend):
 
         if "AASHE_ACCOUNT_STAFF" in groups:
             user.is_staff = True
+            user.is_superuser = True
 
 
 class OIDCToDjangoGroupsMapping:

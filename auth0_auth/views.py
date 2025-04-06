@@ -22,7 +22,7 @@ class GetUserProfileCallbackView(OIDCAuthenticationCallbackView):
                 self.request.session["user_profile"] = resp.json()
                 auth.login(self.request, self.user)
             else:
-                print("Error retrieving accounts data...")
+                print("Error retrieving accounts data for user " + self.user.username)
                 print(resp.content)
                 return HttpResponseRedirect(self.failure_url)
 

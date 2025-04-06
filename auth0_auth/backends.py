@@ -40,9 +40,11 @@ class Auth0Backend(OIDCAuthenticationBackend):
 
     def update_user(self, user, claims):
         # Basic attributes
+        user_id = claims["sub"].replace("|", "_") # also update username for existing users - to make it consistent
         given_name = claims.get("given_name", "")
         family_name = claims.get("family_name", "")
         # User update
+        user.username = user_id
         user.first_name = given_name
         user.last_name = family_name
         # Relationships

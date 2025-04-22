@@ -120,3 +120,9 @@ class Auth0APIClient:
         response = requests.get(self.auth0_base_url + f"stats/daily", headers=self.headers)
 
         return response
+
+    def get_user(self, user_id):
+
+        response = requests.get(self.auth0_base_url + f"users/{user_id}", headers=self.headers)
+
+        return response

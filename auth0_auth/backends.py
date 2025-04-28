@@ -17,7 +17,10 @@ def provider_logout(request):
 class Auth0Backend(OIDCAuthenticationBackend):
     def verify_claims(self, claims) -> bool:
         groups = self._retrieve_groups_from_claims(claims)
-        return OIDCToDjangoGroupsMapping.has_any_valid_group(groups)
+        # There is a slight delay between when the user is created and when the groups are assigned
+        # This causes new registrations logins to not be able to retrieve groups immediately after signup
+        # Fix: also allow empty groups
+        return OIDCToDjangoGroupsMapping.has_any_valid_group(groups) or groups == []
 
     def create_user(self, claims):
         # Basic attributes

@@ -64,7 +64,7 @@ class Auth0Backend(OIDCAuthenticationBackend):
 
     @staticmethod
     def _retrieve_groups_from_claims(claims: dict):
-        return claims.get(settings.CUSTOM_OIDC_GROUPS_CLAIM, [])
+        return claims.get(settings.CUSTOM_OIDC_GROUPS_CLAIM, ["AASHE_ACCOUNT_EMAIL_ONLY"]) # give email by default
 
     @classmethod
     def _fill_user_with_groups(cls, user, claims):

@@ -45,7 +45,7 @@ class Auth0APIClient:
         payload = {
             "client_id": self.auth0_client_id,
             "client_secret": self.auth0_client_secret,
-            "audience": "https://" + self.auth0_domain + "/api/v2/",
+            "audience": "https://aashe.us.auth0.com/api/v2/", # needs to be aashe.us.auth0.com
             "grant_type": "client_credentials"
         }
 

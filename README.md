@@ -4,7 +4,11 @@ Allows AASHE applications to authenticate through Auth0.
 
 This project uses `mozilla-django-oidc` under the hood.
 
-We are using https://rest.membersuite.com/crm/swagger/ui/index#/Individuals to interact with MemberSuite
+## We are using the following to interact with MemberSuite
+
+https://rest.membersuite.com/crm/swagger/ui/index#/Individuals 
+https://rest.membersuite.com:443/platform/swagger/docs/v2
+
 ## Installation
 
 Install the package:

@@ -7,6 +7,7 @@ This project uses `mozilla-django-oidc` under the hood.
 ## We are using the following to interact with MemberSuite
 
 https://rest.membersuite.com/crm/swagger/ui/index#/Individuals 
+
 https://rest.membersuite.com:443/platform/swagger/docs/v2
 
 ## Installation

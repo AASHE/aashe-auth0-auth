@@ -127,3 +127,10 @@ class Auth0APIClient:
         response = requests.get(self.auth0_base_url + f"users/{user_id}", headers=self.headers)
 
         return response
+
+    def delete_user(self, user_id):
+        user_id = user_id.replace("_", "|") # revert to auth0 format
+
+        response = requests.delete(self.auth0_base_url + f"users/{user_id}", headers=self.headers)
+
+        return response

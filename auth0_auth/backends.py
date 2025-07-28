@@ -35,6 +35,7 @@ class Auth0Backend(OIDCAuthenticationBackend):
             email=email,
             first_name=given_name,
             last_name=family_name,
+            is_active=True
         )
         # Relationships
         self._fill_user_with_groups(created_user, claims)
@@ -50,6 +51,7 @@ class Auth0Backend(OIDCAuthenticationBackend):
         user.username = user_id
         user.first_name = given_name
         user.last_name = family_name
+        user.is_active = True
         # Relationships
         self._fill_user_with_groups(user, claims)
         user.save()

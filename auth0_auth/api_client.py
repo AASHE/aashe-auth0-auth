@@ -55,60 +55,6 @@ class Auth0APIClient:
 
         return json.loads(response.content)
 
-    def create_organization(self, organization_slug, organization_name):
-
-        payload = {
-            "name": organization_slug,
-            "display_name": organization_name,
-        }
-
-        response = requests.post(self.auth0_base_url + "organizations", json=payload, headers=self.headers)
-
-        return response
-
-    def delete_organization(self, organization_id):
-
-        response = requests.delete(self.auth0_base_url + f"organizations/{organization_id}", headers=self.headers)
-
-        return response
-
-    def list_organizations(self, fetch_all=False, rate_limit_seconds=1):
-        """ Fetches a list of 100 last created organizations, use fetch_all to get all. """
-
-        orgs = []
-        
-        response = requests.get(self.auth0_base_url + "organizations?sort=created_at:-1&take=100", headers=self.headers)
-
-        if response.status_code == 200:
-            orgs.extend(response.json()["organizations"])
-            while "next" in response.json() and fetch_all:
-                response = requests.get(self.auth0_base_url + "organizations?sort=created_at:-1&take=100&from=" + response.json()["next"], headers=self.headers)
-                orgs.extend(response.json()["organizations"])
-        else:
-            print("Couldn't get list of organizations: " + str(response))
-
-        time.sleep(rate_limit_seconds)
-
-        return orgs
-
-    def update_organization(self, organization_id, metadata):
-
-        response = requests.patch(self.auth0_base_url + f"organizations/{organization_id}", json={"metadata": metadata}, headers=self.headers) 
-
-        return response
-
-    def get_user_organizations(self, user_id):
-
-        response = requests.get(self.auth0_base_url + f"users/{user_id}/organizations", headers=self.headers)
-
-        return response
-
-    def add_user_to_organization(self, user_id, organization_id):
-
-        response = requests.post(self.auth0_base_url + f"organizations/{organization_id}/members", json={"members": [user_id,]}, headers=self.headers) 
-
-        return response
-
     def get_active_users_count(self):
 
         response = requests.get(self.auth0_base_url + f"stats/active-users", headers=self.headers)

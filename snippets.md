@@ -2,7 +2,7 @@
 
 Contains versioned snippets of code used in the Auth0 management dashboard.
 
-## Tricke user migration
+## Trickle user migration
 
 Login function (Authentication/Database/Custom Database):
 

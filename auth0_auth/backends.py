@@ -88,6 +88,7 @@ class OIDCToDjangoGroupsMapping:
         ("AASHE_ACCOUNT_BASIC", "basic"),
         ("AASHE_ACCOUNT_TEMPORARY_MEMBER", "temporary_member"),
         ("AASHE_ACCOUNT_MEMBER", "member"),
+        ("AASHE_ACCOUNT_BILLING", "billing"),
         ("AASHE_ACCOUNT_STAFF", "staff"),
     ]
 

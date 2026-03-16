@@ -47,7 +47,7 @@ OIDC_RP_CLIENT_ID = os.environ.get("AUTH0_CLIENT_ID")
 OIDC_RP_CLIENT_SECRET = os.environ.get("AUTH0_CLIENT_SECRET")
 OIDC_RP_SCOPES = os.environ.get("OIDC_RP_SCOPES", "openid profile email")
 
-CUSTOM_OIDC_GROUPS_CLAIM = "https://accounts-aashe.aashe.org/roles"
+CUSTOM_OIDC_GROUPS_CLAIM = "https://accounts.aashe.org/roles"
 AUTH0_LOGOUT_ENDPOINT = f"https://{AUTH0_DOMAIN}/v2/logout"
 ALLOW_LOGOUT_GET_METHOD = True
 LOGIN_REDIRECT_URL = f"{BASE_URL}/django-admin/"

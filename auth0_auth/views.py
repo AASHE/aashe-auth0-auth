@@ -44,6 +44,19 @@ class GetUserProfileCallbackView(OIDCAuthenticationCallbackView):
                 self.request.session["user_profile"] = profile
                 auth.login(self.request, self.user)
 
+            elif resp.status_code == 404:
+                logger.warning(
+                    "Accounts API user not found, redirecting to accounts login",
+                    extra={
+                        "username": self.user.username,
+                        "status_code": resp.status_code,
+                        "response_text": resp.text if resp.text else "<EMPTY_BODY>",
+                    }
+                )
+                from django.conf import settings
+                accounts_login_url = settings.ACCOUNTS_BASE_URL + "/auth0/authenticate/"
+                return HttpResponseRedirect(accounts_login_url)
+
             else:
                 logger.error(
                     "Accounts API returned error",
@@ -59,7 +72,7 @@ class GetUserProfileCallbackView(OIDCAuthenticationCallbackView):
                 )
                 logger.error(f"RAW RESPONSE OBJECT: {resp!r}")
                 logger.error(f"RAW REQUEST OBJECT: {resp.request!r}")
-                
+
                 return HttpResponseRedirect(self.failure_url)
 
         # Set id_token expiration (unchanged logic)

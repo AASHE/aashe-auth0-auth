@@ -3,7 +3,7 @@ from django.conf import settings
 
 class AASHEAccountsAPIClient:
     def __init__(self, accounts_base_url=None, accounts_api_key=None):
-        self.accounts_base_url = accounts_base_url or settings.ACCOUNTS_BASE_URL
+        self.accounts_base_url = accounts_base_url or settings.API_ACCOUNTS_BASE_URL
         self.accounts_api_key = accounts_api_key or settings.ACCOUNTS_API_KEY
 
         self.accounts_base_url = self.accounts_base_url + "/api/v1/"

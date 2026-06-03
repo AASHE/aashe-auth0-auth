@@ -19,6 +19,17 @@ class AASHEAccountsAPIClient:
 
         return response
 
+    def switch_organization(self, username, org_id):
+
+        payload = {"organization": org_id, "username": username}
+        response = requests.post(
+            self.accounts_base_url + "switch_organization",
+            json=payload,
+            headers=self.headers,
+        )
+
+        return response
+
 class Auth0APIClient:
     def __init__(self, auth0_domain=None, auth0_client_id=None, auth0_client_secret=None):
         self.auth0_domain = auth0_domain or settings.AUTH0_DOMAIN
